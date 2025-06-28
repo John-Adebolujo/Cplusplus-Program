@@ -1,6 +1,6 @@
 /*
 This program will display an Object-Oriented Programming (OOP) functions to create
-Two (2) clocks that shows simultaeously and allow for user input. 
+Two (2) clocks that shows simultaeously and allow for user input.
 */
 
 /*
@@ -23,12 +23,12 @@ private:
     int hours;          // This variable stores Hours
     int minutes;        // This variable stores Minutes
     int seconds;        // This variable stores Seconds
-    
+
 public:
     // The following is a Constructor to initialize the clock with default or specified time
-    Clock(int h = 0, int m = 0, int s = 0) : 
-        hours(h), 
-        minutes(m), 
+    Clock(int h = 0, int m = 0, int s = 0) :
+        hours(h),
+        minutes(m),
         seconds(s) {}
 
     // We start with the Method to add one hour to the time through the user's input
@@ -45,7 +45,7 @@ public:
         }
     }
 
-    
+
     // Next is the Method to add one second to the time through the user's input
     void addSecond() {
         seconds++;
@@ -65,8 +65,8 @@ public:
         if (displayHours == 0) displayHours = 12;                    // This statement cater for Time changes at Noon and Midnight hours
         string period = (hours < 12) ? "AM" : "PM";                  // This statement examine Time periods AM/PM 
         cout << setw(2) << setfill('0') << displayHours << ":"       // This statement display Time hours (12 hours format)
-             << setw(2) << setfill('0') << minutes << ":"            // This statement display Time Minutes 
-             << setw(2) << setfill('0') << seconds << " " << period; // This statement display Time seconds 
+            << setw(2) << setfill('0') << minutes << ":"            // This statement display Time Minutes 
+            << setw(2) << setfill('0') << seconds << " " << period; // This statement display Time seconds 
     }
 
     // Then, we create the Function to display time in 24-hour format
@@ -77,18 +77,18 @@ public:
     }
 };
 
-    // Function to print '*' 26 times 
-    string nCharString(size_t n, char c) {
+// Function to print '*' 26 times 
+string nCharString(size_t n, char c) {
 
-        string result;                                              // This statement define string variable "result" 
-        for (size_t i = 0; i < n; ++i) {                            // This statement define the Loop to print "*" for the number of times specified
-            result += c;                                            // This statement acts as a counter for the Loop
-        }
-
-        return result;                                              // This statement return the value of the function
+    string result;                                              // This statement define string variable "result" 
+    for (size_t i = 0; i < n; ++i) {                            // This statement define the Loop to print "*" for the number of times specified
+        result += c;                                            // This statement acts as a counter for the Loop
     }
 
-    
+    return result;                                              // This statement return the value of the function
+}
+
+
 // The following section have Functions that display choices and receive user's input
 
 // Function to display the choices menu and process user input
@@ -144,14 +144,24 @@ void displayMenu(Clock& clock12, Clock& clock24) {
 
 int main() {                                        // The main function is where source code begins execution
     Clock clock12(10, 30, 45);                      // This statement initialize the 12 hour clock with random time
-    Clock clock24(10, 30, 45);                      // This statement initialize the 24 hour clock with random time
+    Clock clock24(18, 38, 45);                      // This statement initialize the 24 hour clock with random time
 
-    displayMenu(clock12, clock24);                  // This statement start the user interaction menu
+    bool running = true;
+    while (running) {
+        cout << "\n12-Hour Clock: ";
+        clo12.display12HourFormat();
+        cout << "24-Hour Clock: ";
+        clock24.display24HourFormat(); "
+
+            displayMenu(clock12, clock24);                  // This statement start the user interaction menu
+        int choice;
+        cin >> choice;
+    }
 
     char toPrint = '*';
     int nTimes = 26;
     string output = nCharString(nTimes, toPrint);   // This statement calls the nCharString Function and assign it to string output variable
-    
-    
+
+
     return 0;                                       // This statement end the program
 }
